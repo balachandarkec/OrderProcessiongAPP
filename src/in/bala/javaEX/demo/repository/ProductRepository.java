@@ -8,21 +8,39 @@ import java.util.List;
 public class ProductRepository {
     public static List<Product> products=new ArrayList<>();
 
-    public void addProduct(Product p){
-        this.products.add(p);
+    public static void addProduct(Product p){
+      products.add(p);
     }
 
-    public List<Product> getProducts() {
+    public static List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public static void setProducts(List<Product> products) {
+        products = products;
     }
 
-    public void ListAllProducts() {
-        for (Product product : this.products) {
+
+    public static Product findProductById(int id) {
+            Product result=null;
+        for (Product p: products) {
+            if (id==p.getId()){
+                result=p;
+                break;
+            }
+        }
+          return result;
+
+
+    }
+
+
+    public static void ListAllProducts() {
+        for (Product product : products) {
             System.out.println(product.getId()+" --> "+product.getName());
         }
     }
+
+
+
 }
